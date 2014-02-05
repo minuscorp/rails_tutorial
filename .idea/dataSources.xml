@@ -13,6 +13,12 @@
       <jdbc-url>jdbc:sqlite:C:\Users\Jorge\RubymineProjects\untitled2\db\production.sqlite3</jdbc-url>
       <libraries />
     </data-source>
+    <data-source source="LOCAL" name="Rails untitled2: test" uuid="1d68e134-67a5-444c-913e-c2d7fcdcc426">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\Jorge\RubymineProjects\untitled2\db\test.sqlite3</jdbc-url>
+      <libraries />
+    </data-source>
   </component>
 </project>
 
