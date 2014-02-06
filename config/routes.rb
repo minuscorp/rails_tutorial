@@ -1,6 +1,9 @@
 Untitled2::Application.routes.draw do
   # resources genera todas las acciones necesarias para crear, mostrar, modificar, actualizar, destruir
   resources :users
+  resources :sessions, only: [:new, :create, :destroy]
+  match '/signin', to: 'sessions#new', via: 'get'
+  match '/signout', to: 'sessions#destroy', via: 'delete'
   #get "users/new"
   match '/signup', to: 'users#new', via: 'get'
   #get "static_pages/contact"
