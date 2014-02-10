@@ -1,4 +1,5 @@
 Untitled2::Application.routes.draw do
+  #get "password_resets/new"
   #get "relationships/create"
   #get "relationships/destroy"
   #get "microposts/create"
@@ -9,6 +10,7 @@ Untitled2::Application.routes.draw do
       get :following, :followers
     end
   end
+  resources :password_resets
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]

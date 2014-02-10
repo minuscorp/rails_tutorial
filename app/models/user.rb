@@ -13,8 +13,9 @@ class User < ActiveRecord::Base
   validates :email, presence:   true,
             format:     { with: VALID_EMAIL_REGEX },
             uniqueness: { case_sensitive: false }
+  validates :username, presence: true, uniqueness: {case_sensitive: false }
   has_secure_password
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6}
 
   def feed
     # Hace una consulta SQL WHERRE user_id = ?->id
@@ -41,6 +42,20 @@ class User < ActiveRecord::Base
   def User.encrypt(token)
     Digest::SHA2.hexdigest(token.to_s)
   end
+
+  def send_password_reset
+    self.password_reset_token = User.new_remember_token
+    self.password_reset_sent_at = Time.zone.now
+    #self.update_attributes!(password_reset_token: User.new_remember_token, password_reset_sent_at: Time.zone.now )
+    save!(validate: false)
+    UserMailer.password_reset(self).deliver
+  end
+
+  def new_password
+    self.password
+  end
+
+
   private
 
   def create_remember_token
