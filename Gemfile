@@ -13,6 +13,8 @@ gem 'will_paginate', '3.0.4'
 
 gem 'bootstrap-will_paginate', '0.0.9'
 
+gem 'devise'
+
 group :test do
   gem 'factory_girl_rails', '4.2.1'
 end

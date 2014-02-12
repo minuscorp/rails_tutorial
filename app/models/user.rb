@@ -51,6 +51,10 @@ class User < ActiveRecord::Base
     UserMailer.password_reset(self).deliver
   end
 
+  def send_confirmation_mail
+    UserMailer.email_confirmation(self).deliver
+  end
+
   def new_password
     self.password
   end

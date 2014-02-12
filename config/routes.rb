@@ -10,11 +10,13 @@ Untitled2::Application.routes.draw do
       get :following, :followers
     end
   end
+  resources :account_confirmation
   resources :password_resets
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
   match '/signin', to: 'sessions#new', via: 'get'
+  #match '/signin', to: 'sessions#index', via: 'get'
   match '/signout', to: 'sessions#destroy', via: 'delete'
   #get "users/new"
   match '/signup', to: 'users#new', via: 'get'

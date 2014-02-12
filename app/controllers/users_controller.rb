@@ -17,10 +17,15 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.confirmation_token = User.new_remember_token
+    @user.confirmed = false
     if @user.save
-      sign_in @user
-      flash[:success] = "Welcome to the Sample App!"
-      redirect_to @user
+      #sign_in @user
+      #flash[:success] = "Welcome to the Sample App!"
+      #redirect_to @user
+      #UserMailer.email_confirmation(@user).deliver
+      @user.send_confirmation_mail
+      redirect_to root_url, notice: "Email confirmation sent for account activation."
     else
       render 'new'
     end

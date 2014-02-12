@@ -13,7 +13,8 @@ def make_users
                        email:    "example@railstutorial.org",
                        password: "foobar",
                        password_confirmation: "foobar",
-                       admin: true)
+                       admin: true,
+                       confirmed: true)
   99.times do |n|
     name  = Faker::Name.name
     username = Faker::Name.first_name
@@ -24,7 +25,8 @@ def make_users
                  username: usernamefake,
                  email:    email,
                  password: password,
-                 password_confirmation: password)
+                 password_confirmation: password,
+                 confirmed: true)
   end
 end
 
